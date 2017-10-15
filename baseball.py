@@ -23,20 +23,15 @@ def main():
 
     table = soup.find('table',{'class': 'table'})
     count = 0
-    
-    numElements = len(soup.find_all('td'))
-    for x in numElements:
-        text = salaries[x].renderContents()
-        trimmed_text = text.strip()
-        print (trimmed_text)
 
- 
-    
+    for tr in soup.find_all('tr')[1:]:
+        tds = tr.find_all('td')
+        count = count + 1
+        print tds[0].text, tds[1].text
 
-    
+
+
+
+
 
 main()
- 
-
-
-    
