@@ -30,7 +30,7 @@ def main():
         trimmed_text = text.strip()
         print (trimmed_text)
 
-
+ 
     
 
     
