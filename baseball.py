@@ -10,6 +10,7 @@ from decimal import Decimal
 def main():
     #List that holds the salaries of all of the players
     salaries = []
+    valid_salaries = []
     #There can be no more than 125 players that you need to account for
     #We can start with the variable 'numPlayers = 125' andtif we cannot parse the data correctly
     #(e.g. there is no data) then we can just subtract the number of players by 1, so it does
@@ -36,11 +37,21 @@ def main():
     for x in salaries:
         try:
             value = Decimal(sub(r'[^\d.]', '', x))
+            valid_salaries.append(value)
             print value
         except Exception as e:
             pass
 
+    #Sort that is from High to Low
+    valid_salaries.sort(reverse=True)
+    print '-------------------------------------------'
+    print len(valid_salaries)
+    for t in valid_salaries:
+        print t
 
+
+    valid_salaries = valid_salaries[:125]
+    print 'The average is: ',numpy.mean(valid_salaries)
 
 
 
