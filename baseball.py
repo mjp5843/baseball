@@ -27,31 +27,31 @@ def main():
         count = count + 1
         #tds[0] holds the name of the players
         #tds[1] holds the salaries of the players
-        print tds[0].text, tds[1].text
+        print (tds[0].text, tds[1].text)
         salaries.append(tds[1].text)
         if(tds[1].text == "no salary data"):
-            print "First probelm at player:", tds[1].text
-        print 'The length of the list is:', len(salaries)
+            print ("First probelm at player:", tds[1].text)
+        print ('The length of the list is:', len(salaries))
 
 
     for x in salaries:
         try:
             value = Decimal(sub(r'[^\d.]', '', x))
             valid_salaries.append(value)
-            print value
+            print (value)
         except Exception as e:
             pass
 
     #Sort that is from High to Low
     valid_salaries.sort(reverse=True)
-    print '-------------------------------------------'
-    print len(valid_salaries)
+    print ('-------------------------------------------')
+    print (len(valid_salaries))
     for t in valid_salaries:
-        print t
+        print (t)
 
 
     valid_salaries = valid_salaries[:125]
-    print 'The average is: ',numpy.mean(valid_salaries)
+    print ('The average is: ',numpy.mean(valid_salaries))
 
 
 
