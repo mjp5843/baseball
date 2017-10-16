@@ -9,6 +9,14 @@ import urllib.request
 
 
 def main():
+
+    """
+    Citations: 
+    https://stackoverflow.com/questions/8421922/how-do-i-convert-a-currency-string-to-a-floating-point-number-in-python 
+    https://pythonprogramming.net/urllib-tutorial-python-3/ 
+    https://www.crummy.com/software/BeautifulSoup/ 
+
+    """
     #List that holds the salaries of all of the players
     salaries = []
     valid_salaries = []
@@ -54,3 +62,4 @@ def main():
     fig.savefig('fig1.png', bbox_inches='tight')
     
 main()
+
