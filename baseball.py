@@ -1,22 +1,24 @@
 #imports regex, beautiful soup for web scraping and decimal modules
 
 import bs4
-import matplotlib
-import numpy
+#import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from re import sub
 from decimal import Decimal
+import urllib.request
 
 
 def main():
     #List that holds the salaries of all of the players
     salaries = []
     valid_salaries = []
-    #There can be no more than 125 players that you need to account for
-    #We can start with the variable 'numPlayers = 125' andtif we cannot parse the data correctly
-    #(e.g. there is no data) then we can just subtract the number of players by 1, so it does
-    #not interfere with any of the data
-    with open("questionnaire-148920.appspot.com.html") as fp:
-        soup = bs4.BeautifulSoup(fp,"html.parser")
+
+    url = 'https://questionnaire-148920.appspot.com/swe/'
+    page = urllib.request.urlopen(url)
+    soup = bs4.BeautifulSoup(page,"html.parser")
 
 
     table = soup.find('table',{'class': 'table'})
@@ -27,32 +29,34 @@ def main():
         count = count + 1
         #tds[0] holds the name of the players
         #tds[1] holds the salaries of the players
-        print (tds[0].text, tds[1].text)
+       
         salaries.append(tds[1].text)
-        if(tds[1].text == "no salary data"):
-            print ("First probelm at player:", tds[1].text)
-        print ('The length of the list is:', len(salaries))
-
+        
 
     for x in salaries:
         try:
             value = Decimal(sub(r'[^\d.]', '', x))
             valid_salaries.append(value)
-            print (value)
         except Exception as e:
             pass
 
     #Sort that is from High to Low
     valid_salaries.sort(reverse=True)
-    print ('-------------------------------------------')
-    print (len(valid_salaries))
-    for t in valid_salaries:
-        print (t)
 
 
     valid_salaries = valid_salaries[:125]
-    print ('The average is: ',numpy.mean(valid_salaries))
+    print ('The average is: $',np.mean(valid_salaries))
 
+    #need to convert the Decimals into ints
+    int_salaries = [int(x) for x in valid_salaries]
 
+    #creates the box & whisker figure
+    fig = plt.figure(1, figsize=(9,6))
+    ax = fig.add_subplot(111)
+    
+    bp = ax.boxplot(int_salaries)
 
+    plt.show()
+    fig.savefig('fig1.png', bbox_inches='tight')
+    
 main()
