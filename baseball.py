@@ -22,11 +22,9 @@ def main():
 
 
     table = soup.find('table',{'class': 'table'})
-    count = 0
 
     for tr in soup.find_all('tr')[1:]:
         tds = tr.find_all('td')
-        count = count + 1
         #tds[0] holds the name of the players
         #tds[1] holds the salaries of the players
        
@@ -53,7 +51,6 @@ def main():
     #creates the box & whisker figure
     fig = plt.figure(1, figsize=(9,6))
     ax = fig.add_subplot(111)
-    
     bp = ax.boxplot(int_salaries)
 
     plt.show()
