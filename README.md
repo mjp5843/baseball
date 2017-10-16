@@ -11,8 +11,11 @@ Then open the requirments.txt file and for each requirment do:
 
 pip install "requirment_name". (e.g pip install numpy)
 
+
 After that is all done go to the baseball folder and run the program by:
 
 python baseball.py 
+
+If you get an error make sure you have all the requirments and are using python 3.
 
 The mean will be presented in the terminal shell and the graph will appear automatically
