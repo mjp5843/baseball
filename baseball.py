@@ -38,6 +38,7 @@ def main():
 
     for x in salaries:
         try:
+            #Uses regular expression to parse data
             value = Decimal(sub(r'[^\d.]', '', x))
             valid_salaries.append(value)
         except Exception as e:
