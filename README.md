@@ -2,9 +2,10 @@
 Github repo for Phillies analytics problem
 
 # To run: 
-clone the repo. 
-Download python 3
-make sure that you have it added to your path (option for this)
+clone the repo.
+Download python 3.
+make sure that you have it added to your path (there is an option for this).
+
 Next: make sure you have pip installed
 Then open the requirments.txt file and for each requirment do: 
 
